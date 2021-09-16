@@ -2,13 +2,18 @@ import React, { useEffect, useState } from "react";
 import { CardComponent } from "./CardComponent";
 import GoodCards from "./ChainOfR/GoodCards";
 import OneCard from "./ChainOfR/OneCard";
+//import ScoreCard from "./ChainOfR/ScoreCard";
+//import ScoredosCard from "./ChainOfR/ScoredosCard";
 import TwoCard from "./ChainOfR/TwoCard";
 import { createBoard } from "./createBoard";
 import "./styles.css";
 let list = [];
 let twice = [];
 let score = 50;
-let tiempo = [];
+
+/*let scoreCard = new ScoreCard();
+let scoredosCard = new ScoredosCard();
+scoreCard.setNext(ScoredosCard);*/
 
 /*let oneCard = new OneCard();
 let twoCard = new TwoCard();
@@ -28,7 +33,7 @@ export const MemoryComponent = () => {
       twice = [];
     }
     const item = stateBoard.find((item) => item.id === id);
-    //      oneCard.process(twice, item, stateBoard, setStateBoard);
+    //oneCard.process(twice, item, stateBoard, setStateBoard, score);
     if (twice.length == 0) {
       twice = [...twice, item];
     } else if (twice.length == 1) {
@@ -41,12 +46,9 @@ export const MemoryComponent = () => {
             if (item.done === false) {
               item.state = false;
               item.styles = "item";
-              item.score = "score";
-
               if (score === 0) {
                 item.backend = "??";
                 score = 55;
-
                 alert("GAME OVER");
               }
               score = score - 0.5;
